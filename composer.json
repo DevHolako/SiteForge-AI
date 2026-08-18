@@ -24,7 +24,15 @@
     "scripts": {
         "lint": "pint",
         "lint:test": "pint --test",
-        "test": "pint --test && pest --test-directory=src/Tests --colors=always",
-        "ci": "pint --test && pest --test-directory=src/Tests --ci --colors=always --display-errors"
+        "pest": "pest --test-directory=src/Tests --colors=always",
+        "pest:ci": "pest --test-directory=src/Tests --ci --colors=always --display-errors",
+        "test": [
+            "@lint:test",
+            "@pest"
+        ],
+        "ci": [
+            "@lint:test",
+            "@pest:ci"
+        ]
     }
 }
