@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SiteForgeAI\Controllers;
@@ -10,7 +11,8 @@ class SettingsController extends BaseController
 {
     public function __construct(
         private SettingsService $settings_service
-    ) {}
+    ) {
+    }
 
     public function get(WP_REST_Request $request): array
     {

@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace SiteForgeAI\Core;
 
@@ -11,8 +11,6 @@ namespace SiteForgeAI\Core;
 
 class Plugin
 {
-
-
     public static function activate(): void
     {
         // safty checks

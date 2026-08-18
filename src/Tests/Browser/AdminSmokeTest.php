@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use SiteForgeAI\Core\Plugin;
 
 beforeEach(function () {
@@ -37,11 +39,11 @@ test('it registers menu pages in WordPress Admin Menu registry', function () {
 
     expect($menu)->toBeArray()->not->toBeEmpty();
     expect($submenu)->toBeArray()->toHaveKey('siteforge-ai');
-    
+
     // Check that Wizard and Settings submenus exist
     $siteforgeSubmenus = $submenu['siteforge-ai'];
     $submenuTitles = array_column($siteforgeSubmenus, 0);
-    
+
     expect($submenuTitles)->toContain('Wizard')
         ->and($submenuTitles)->toContain('Settings');
 });

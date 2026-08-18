@@ -1,9 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SiteForgeAI\Core;
-
-use SiteForgeAI\Security\Permission;
 
 class Route
 {

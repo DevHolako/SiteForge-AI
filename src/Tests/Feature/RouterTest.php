@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use SiteForgeAI\Core\Router;
 use SiteForgeAI\Controllers\SettingsController;
 

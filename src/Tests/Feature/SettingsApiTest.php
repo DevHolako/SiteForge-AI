@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 beforeEach(function () {
     authenticateAsAdmin();
     \SiteForgeAI\Core\Router::register();
@@ -10,7 +12,7 @@ test('it returns settings and masked api keys via GET /settings/get', function (
     $response = rest_do_request($request);
 
     expect($response->get_status())->toBe(200);
-    
+
     $data = $response->get_data();
     expect($data)->toHaveKey('ok', true)
         ->and($data['data'])->toHaveKeys(['ai_provider', 'ai_model', 'temperature', 'api_keys']);

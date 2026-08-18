@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use SiteForgeAI\Security\Crypto;
 
 beforeEach(function () {
@@ -8,16 +10,16 @@ beforeEach(function () {
 
 test('it encrypts and decrypts a plain text string successfully', function () {
     $plain = 'sk-proj-test-123456789-secret-api-key';
-    
+
     $encrypted = Crypto::encrypt($plain);
-    
+
     expect($encrypted)
         ->toBeString()
         ->not->toBeEmpty()
         ->not->toBe($plain);
-        
+
     $decrypted = Crypto::decrypt($encrypted);
-    
+
     expect($decrypted)->toBe($plain);
 });
 

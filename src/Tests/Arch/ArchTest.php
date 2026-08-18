@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 arch('it enforces strict types across all plugin code')
     ->expect('SiteForgeAI')
     ->toUseStrictTypes();

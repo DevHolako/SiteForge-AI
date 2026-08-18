@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use SiteForgeAI\Support\Config;
 
 test('it retrieves top-level configuration arrays', function () {

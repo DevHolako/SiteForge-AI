@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace SiteForgeAI\Security;
 
-
 /**
  * Class Crypto
  * we use the aes-256-cbc algorithm for encryption and decryption of sensitive data.

@@ -13,7 +13,8 @@
     },
     "require-dev": {
         "pestphp/pest": "^5.1",
-        "pestphp/pest-plugin-browser": "^5.0"
+        "pestphp/pest-plugin-browser": "^5.0",
+        "laravel/pint": "^1.30"
     },
     "config": {
         "allow-plugins": {
@@ -21,7 +22,9 @@
         }
     },
     "scripts": {
+        "lint": "pint",
+        "lint:test": "pint --test",
         "test": "pest --test-directory=src/Tests --colors=always",
-        "ci": "pest --test-directory=src/Tests --ci --colors=always --display-errors"
+        "ci": "pint --test && pest --test-directory=src/Tests --ci --colors=always --display-errors"
     }
 }

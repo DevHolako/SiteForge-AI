@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use SiteForgeAI\Support\Validator;
 
 test('it passes when all required fields and types match rules', function () {

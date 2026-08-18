@@ -1,10 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SiteForgeAI\Support;
 
 use WP_REST_Response;
-
 
 class Response
 {
