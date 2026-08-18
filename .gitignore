@@ -1,0 +1,38 @@
+# Composer Dependencies
+vendor/
+composer.phar
+
+# Testing & Cache
+.phpunit.result.cache
+.pest/
+.phpunit.cache/
+
+# Local Scratch & Temp
+/scratch/
+*.log
+
+# IDE & Editor Files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Node / Frontend Build (For Phase 5)
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

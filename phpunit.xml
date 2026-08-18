@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="src/Tests/Pest.php"
+         colors="true"
+         executionOrder="depends,defects"
+         beStrictAboutOutputDuringTests="true"
+         failOnRisky="true"
+         failOnWarning="true">
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>src/Tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory>src/Tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Browser">
+            <directory>src/Tests/Browser</directory>
+        </testsuite>
+        <testsuite name="Arch">
+            <directory>src/Tests/Arch</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory>src</directory>
+        </include>
+        <exclude>
+            <directory>src/Tests</directory>
+        </exclude>
+    </source>
+</phpunit>

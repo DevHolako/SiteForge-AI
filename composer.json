@@ -1,0 +1,27 @@
+{
+    "name": "devholako/siteforge-ai",
+    "description": "AI Site Architect & Content Generator for WordPress",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "SiteForgeAI\\": "src/"
+        },
+        "files": [
+            "src/Support/helpers.php"
+        ]
+    },
+    "require-dev": {
+        "pestphp/pest": "^5.1",
+        "pestphp/pest-plugin-browser": "^5.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "test": "pest --test-directory=src/Tests --colors=always",
+        "ci": "pest --test-directory=src/Tests --ci --colors=always --display-errors"
+    }
+}
