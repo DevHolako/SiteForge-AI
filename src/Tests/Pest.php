@@ -29,3 +29,12 @@ if (class_exists(\Pest\Support\Container::class) && interface_exists(\Pest\Plugi
         new \Pest\Plugins\Tia\FileState($tempDir)
     );
 }
+
+
+$isCi = !empty($_SERVER['CI'])
+    || getenv('CI') !== false
+    || in_array('--ci', $_SERVER['argv'] ?? [], true);
+
+if (!$isCi) {
+    pest()->browser()->headed();
+}
