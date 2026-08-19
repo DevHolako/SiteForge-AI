@@ -6,4 +6,5 @@ use SiteForgeAI\Core\Route;
 use SiteForgeAI\Controllers\AIController;
 
 Route::post('ai/enhance', AIController::class, 'enhance');
+Route::post('ai/suggestions', AIController::class, 'suggestions');
 Route::post('ai/blueprint', AIController::class, 'blueprint');

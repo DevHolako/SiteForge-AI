@@ -32,6 +32,21 @@ class AIController extends BaseController
     }
 
     /**
+     * Get theme and plugin suggestions for manual selection mode.
+     * POST /siteforge_ai/v1/ai/suggestions
+     */
+    public function suggestions(WP_REST_Request $request): WP_REST_Response
+    {
+        $params = $this->validate($request, [
+            'prompt' => 'required|string|min:3',
+        ]);
+
+        $suggestions = $this->blueprintService->getSuggestions((string) $params['prompt']);
+
+        return Response::ok($suggestions);
+    }
+
+    /**
      * Generate complete WordPress Site Blueprint.
      * POST /siteforge_ai/v1/ai/blueprint
      */

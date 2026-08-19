@@ -58,6 +58,44 @@ PROMPT;
     }
 
     /**
+     * Get tailored Theme and Plugin suggestions for Manual Mode.
+     *
+     * @param string $prompt
+     * @param array<string, mixed> $options
+     * @return array<string, mixed>
+     */
+    public function getSuggestions(string $prompt, array $options = []): array
+    {
+        $systemPrompt = <<<PROMPT
+You are SiteForge AI. Analyze the user's website concept and recommend the best themes and plugins from wordpress.org repository.
+
+You must respond ONLY with a valid JSON object:
+{
+  "niche": "restaurant",
+  "recommended_theme": "astra",
+  "themes": [
+    { "slug": "astra", "name": "Astra", "description": "Lightweight, customizable, and fast multipurpose theme.", "recommended": true },
+    { "slug": "neve", "name": "Neve", "description": "Modern block-based and responsive theme.", "recommended": false },
+    { "slug": "oceanwp", "name": "OceanWP", "description": "Feature-rich theme with deep e-commerce support.", "recommended": false }
+  ],
+  "plugins": [
+    { "slug": "elementor", "name": "Elementor", "description": "Leading drag-and-drop page builder.", "recommended": true },
+    { "slug": "wpforms-lite", "name": "WPForms Lite", "description": "Easy and intuitive drag-and-drop contact forms.", "recommended": true },
+    { "slug": "woocommerce", "name": "WooCommerce", "description": "Full e-commerce store functionality.", "recommended": false },
+    { "slug": "yoast-seo", "name": "Yoast SEO", "description": "Search engine optimization and XML sitemaps.", "recommended": true }
+  ]
+}
+PROMPT;
+
+        $userMessage = sprintf("Website Concept: \"%s\"\n\nGenerate recommended themes and plugins for this project.", $prompt);
+
+        return $this->ai->generateJson($userMessage, [], [
+            'system_prompt' => $systemPrompt,
+            'temperature'   => 0.5,
+        ]);
+    }
+
+    /**
      * Generate complete WordPress Site Blueprint (Theme, Plugins, Pages, Customizer, Starter Content).
      *
      * @param string $prompt
