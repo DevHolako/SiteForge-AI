@@ -21,6 +21,23 @@ function authenticateAsAdmin(): void
     }
 }
 
+// Automatic Database Transaction Isolation: Roll back any database modifications per test
+uses()
+    ->beforeEach(function () {
+        global $wpdb;
+        if (isset($wpdb) && is_object($wpdb)) {
+            $wpdb->query('START TRANSACTION');
+        }
+    })
+    ->afterEach(function () {
+        global $wpdb;
+        if (isset($wpdb) && is_object($wpdb)) {
+            $wpdb->query('ROLLBACK');
+        }
+    });
+
+
+
 // Bind Tia State cleanly in userland container bootstrap
 if (class_exists(\Pest\Support\Container::class) && interface_exists(\Pest\Plugins\Tia\Contracts\State::class)) {
     $tempDir = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'pest_tia_' . md5(__DIR__);
@@ -30,7 +47,7 @@ if (class_exists(\Pest\Support\Container::class) && interface_exists(\Pest\Plugi
     );
 }
 
-
+// Enable headed browser testing if not running in CI
 $isCi = !empty($_SERVER['CI'])
     || getenv('CI') !== false
     || in_array('--ci', $_SERVER['argv'] ?? [], true);
