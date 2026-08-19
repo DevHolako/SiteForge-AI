@@ -2,17 +2,9 @@
 
 echo "🛡️  [Pre-Push] Running Pint Linter & Pest Tests..."
 
-echo "🔍 Checking code styling with Laravel Pint..."
-vendor/bin/pint --test
+composer ci
 if [ $? -ne 0 ]; then
-    echo "❌ Pint style check failed! Run 'composer lint' to auto-fix code style before pushing."
-    exit 1
-fi
-
-echo "🧪 Running full Pest test suite..."
-vendor/bin/pest --test-directory=src/Tests --ci --colors=always
-if [ $? -ne 0 ]; then
-    echo "❌ Pest test suite failed! Push aborted."
+    echo "❌ Composer tests check failed!"
     exit 1
 fi
 
