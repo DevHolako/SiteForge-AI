@@ -107,7 +107,17 @@ class Router
             $type = $param->getType();
 
             if ($type instanceof ReflectionNamedType && !$type->isBuiltin()) {
-                $dependencies[] = self::resolve($type->getName());
+                $typeName = $type->getName();
+
+                if ($typeName === \SiteForgeAI\Services\AI\AIClientInterface::class) {
+                    $dependencies[] = \SiteForgeAI\Services\AI\AIFactory::create();
+                } elseif (class_exists($typeName)) {
+                    $dependencies[] = self::resolve($typeName);
+                } elseif ($param->isDefaultValueAvailable()) {
+                    $dependencies[] = $param->getDefaultValue();
+                } else {
+                    throw new \RuntimeException(sprintf(__('Cannot resolve parameter [%s] in [%s].', 'siteforge-ai'), $param->getName(), $class));
+                }
             } elseif ($param->isDefaultValueAvailable()) {
                 $dependencies[] = $param->getDefaultValue();
             } else {

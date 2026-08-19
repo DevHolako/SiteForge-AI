@@ -8,8 +8,9 @@ use SiteForgeAI\Security\Crypto;
 
 class SettingsService
 {
-    private const SETTINGS_OPTION = 'siteforge_ai_settings';
-    private const KEYS_OPTION     = 'siteforge_ai_api_keys';
+    public const SETTINGS_OPTION = 'siteforge_ai_settings';
+    public const KEYS_OPTION     = 'siteforge_ai_api_keys';
+    public const API_KEYS_OPTION = 'siteforge_ai_api_keys';
 
     /**
      * Get all plugin settings with masked API keys.
