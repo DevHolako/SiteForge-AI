@@ -23,6 +23,14 @@ class Response
     }
 
     /**
+     * Alias for Response::success().
+     */
+    public static function ok(mixed $data = null, int $status = 200): WP_REST_Response
+    {
+        return self::success($data, $status);
+    }
+
+    /**
      * Return a standardized error response envelope.
      */
     public static function error(string $message, int $status = 400, mixed $details = null): WP_REST_Response
